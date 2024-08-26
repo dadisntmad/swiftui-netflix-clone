@@ -13,6 +13,8 @@
 		F759353B2C7CEBC000807B64 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F759353A2C7CEBC000807B64 /* Preview Assets.xcassets */; };
 		F75935492C7CECF000807B64 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F75935482C7CECF000807B64 /* LoginView.swift */; };
 		F759354D2C7CF52E00807B64 /* TextFieldViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = F759354C2C7CF52E00807B64 /* TextFieldViewModifier.swift */; };
+		F78D3AA22C7CF7C700125476 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F78D3AA12C7CF7C700125476 /* CustomButton.swift */; };
+		F78D3AA42C7CFA0600125476 /* CustomButtonViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = F78D3AA32C7CFA0600125476 /* CustomButtonViewModifier.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +25,8 @@
 		F759353A2C7CEBC000807B64 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		F75935482C7CECF000807B64 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		F759354C2C7CF52E00807B64 /* TextFieldViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldViewModifier.swift; sourceTree = "<group>"; };
+		F78D3AA12C7CF7C700125476 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
+		F78D3AA32C7CFA0600125476 /* CustomButtonViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButtonViewModifier.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +79,7 @@
 		F75935442C7CECAF00807B64 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				F78D3AA02C7CF7AB00125476 /* Components */,
 				F759354A2C7CF51100807B64 /* Utils */,
 				F75935452C7CECBB00807B64 /* Auth */,
 			);
@@ -109,8 +114,17 @@
 			isa = PBXGroup;
 			children = (
 				F759354C2C7CF52E00807B64 /* TextFieldViewModifier.swift */,
+				F78D3AA32C7CFA0600125476 /* CustomButtonViewModifier.swift */,
 			);
 			path = ViewModifiers;
+			sourceTree = "<group>";
+		};
+		F78D3AA02C7CF7AB00125476 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				F78D3AA12C7CF7C700125476 /* CustomButton.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -183,10 +197,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F78D3AA42C7CFA0600125476 /* CustomButtonViewModifier.swift in Sources */,
 				F75935492C7CECF000807B64 /* LoginView.swift in Sources */,
 				F759354D2C7CF52E00807B64 /* TextFieldViewModifier.swift in Sources */,
 				F75935362C7CEBBF00807B64 /* ContentView.swift in Sources */,
 				F75935342C7CEBBF00807B64 /* NetflixApp.swift in Sources */,
+				F78D3AA22C7CF7C700125476 /* CustomButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

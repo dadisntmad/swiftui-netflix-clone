@@ -4,6 +4,10 @@ struct LoginView: View {
     @State private var username = ""
     @State private var password = ""
     
+    private var isValid: Bool {
+        return !username.isEmpty && !password.isEmpty
+    }
+    
     var body: some View {
         ZStack {
             Color.gray.opacity(0.15)
@@ -30,18 +34,12 @@ struct LoginView: View {
                     SecureField("Password", text: $password)
                         .textFieldViewModifier()
                     
-                    Button(action: {
-                        
-                    }, label: {
-                        Text("Sign In")
-                            .font(.subheadline)
-                            .fontWeight(.semibold)
-                            .frame(maxWidth: .infinity)
-                            .padding()
-                            .foregroundStyle(.white)
-                            .background(Color("accentRed"))
-                            .clipShape(RoundedRectangle(cornerRadius: 8))
-                    })
+                    CustomButton(
+                        title: "Sign In",
+                        isLoading: false,
+                        isValid: isValid,
+                        action: {}
+                    )
                 }
                 .padding()
                 
