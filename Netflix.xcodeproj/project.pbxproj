@@ -11,6 +11,8 @@
 		F75935362C7CEBBF00807B64 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F75935352C7CEBBF00807B64 /* ContentView.swift */; };
 		F75935382C7CEBC000807B64 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F75935372C7CEBC000807B64 /* Assets.xcassets */; };
 		F759353B2C7CEBC000807B64 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F759353A2C7CEBC000807B64 /* Preview Assets.xcassets */; };
+		F75935492C7CECF000807B64 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F75935482C7CECF000807B64 /* LoginView.swift */; };
+		F759354D2C7CF52E00807B64 /* TextFieldViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = F759354C2C7CF52E00807B64 /* TextFieldViewModifier.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +21,8 @@
 		F75935352C7CEBBF00807B64 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		F75935372C7CEBC000807B64 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F759353A2C7CEBC000807B64 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		F75935482C7CECF000807B64 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		F759354C2C7CF52E00807B64 /* TextFieldViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldViewModifier.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +55,7 @@
 		F75935322C7CEBBF00807B64 /* Netflix */ = {
 			isa = PBXGroup;
 			children = (
+				F75935442C7CECAF00807B64 /* Core */,
 				F75935332C7CEBBF00807B64 /* NetflixApp.swift */,
 				F75935352C7CEBBF00807B64 /* ContentView.swift */,
 				F75935372C7CEBC000807B64 /* Assets.xcassets */,
@@ -65,6 +70,47 @@
 				F759353A2C7CEBC000807B64 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		F75935442C7CECAF00807B64 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				F759354A2C7CF51100807B64 /* Utils */,
+				F75935452C7CECBB00807B64 /* Auth */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		F75935452C7CECBB00807B64 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				F75935462C7CECC500807B64 /* View */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		F75935462C7CECC500807B64 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				F75935482C7CECF000807B64 /* LoginView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		F759354A2C7CF51100807B64 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				F759354B2C7CF51700807B64 /* ViewModifiers */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		F759354B2C7CF51700807B64 /* ViewModifiers */ = {
+			isa = PBXGroup;
+			children = (
+				F759354C2C7CF52E00807B64 /* TextFieldViewModifier.swift */,
+			);
+			path = ViewModifiers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,6 +183,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F75935492C7CECF000807B64 /* LoginView.swift in Sources */,
+				F759354D2C7CF52E00807B64 /* TextFieldViewModifier.swift in Sources */,
 				F75935362C7CEBBF00807B64 /* ContentView.swift in Sources */,
 				F75935342C7CEBBF00807B64 /* NetflixApp.swift in Sources */,
 			);
@@ -280,6 +328,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Dark;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -309,6 +358,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Dark;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
