@@ -1,12 +1,7 @@
 import SwiftUI
 
 struct LoginView: View {
-    @State private var username = ""
-    @State private var password = ""
-    
-    private var isValid: Bool {
-        return !username.isEmpty && !password.isEmpty
-    }
+    @State private var authViewModel = AuthViewModel()
     
     var body: some View {
         ZStack {
@@ -26,19 +21,22 @@ struct LoginView: View {
                 Spacer()
                 
                 VStack(spacing: 24) {
-                    TextField("Username", text: $username)
+                    TextField("Username", text: $authViewModel.username)
                         .textInputAutocapitalization(.never)
                         .textFieldViewModifier()
                     
-                    
-                    SecureField("Password", text: $password)
+                    SecureField("Password", text: $authViewModel.password)
                         .textFieldViewModifier()
                     
                     CustomButton(
                         title: "Sign In",
-                        isLoading: false,
-                        isValid: isValid,
-                        action: {}
+                        isLoading: authViewModel.isLoading,
+                        isValid: authViewModel.isValid,
+                        action: {
+                            Task {
+                                try await authViewModel.login()
+                            }
+                        }
                     )
                 }
                 .padding()
