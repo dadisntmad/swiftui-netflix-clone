@@ -3,8 +3,9 @@ import SwiftUI
 @Observable class AuthViewModel {
     var username = ""
     var password = ""
-    var errorMessage = ""
+    var errorMessage: String?
     var isLoading = false
+    var isAuthenticated = false
     
     var isValid: Bool {
         return !username.trimmingCharacters(in: .whitespaces).isEmpty && !password.trimmingCharacters(in: .whitespaces).isEmpty
@@ -24,6 +25,10 @@ import SwiftUI
         return "\(baseUrl)/session/new?api_key=\(ApiKeys.apiKey)"
     }
     
+    init() {
+        checkAuthentication()
+    }
+    
     private func createToken() async throws -> String {
         guard let url = URL(string: makeTokenBaseUrl) else { throw NetworkEnum.badUrl }
         
@@ -38,6 +43,7 @@ import SwiftUI
             return token
         } catch {
             print("DEBUG: Could not create a token \(error.localizedDescription)")
+            isLoading = false
             errorMessage = error.localizedDescription
             throw NetworkEnum.unknown(error)
         }
@@ -63,6 +69,7 @@ import SwiftUI
             
         } catch {
             print("DEBUG: Could not validate the token \(error.localizedDescription)")
+            isLoading = false
             errorMessage = error.localizedDescription
             throw NetworkEnum.unknown(error)
         }
@@ -87,6 +94,7 @@ import SwiftUI
             
         } catch {
             print("DEBUG: Could not create session \(error.localizedDescription)")
+            isLoading = false
             errorMessage = error.localizedDescription
             throw NetworkEnum.unknown(error)
         }
@@ -106,17 +114,34 @@ import SwiftUI
         return json
     }
     
-    func login() async throws -> String {
+    func login() async throws {
         isLoading = true
+        errorMessage = nil
         
-        let token = try await createToken()
-        let validatedToken = try await validateToken(username: username, password: password, requestToken: token)
-        let sessionId = try await createSession(requestToken: validatedToken)
-        
-        isLoading = false
-        username = ""
-        password = ""
-        
-        return sessionId
+        do {
+            let token = try await createToken()
+            let validatedToken = try await validateToken(username: username, password: password, requestToken: token)
+            let sessionId = try await createSession(requestToken: validatedToken)
+            
+            username = ""
+            password = ""
+            isLoading = false
+            
+            if !sessionId.isEmpty {
+                isAuthenticated = true
+                StorageService.setSessionId(sessionId: sessionId)
+            }
+            
+        } catch {
+            print("DEBUG: Login failed \(error.localizedDescription)")
+            errorMessage = error.localizedDescription
+            throw NetworkEnum.unknown(error)
+        }
+    }
+    
+    
+    private func checkAuthentication() {
+        let sessionId = StorageService.getSessionId()
+        isAuthenticated = sessionId != nil
     }
 }

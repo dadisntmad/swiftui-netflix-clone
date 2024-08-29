@@ -1,7 +1,9 @@
 import SwiftUI
+import AlertToast
 
 struct LoginView: View {
     @State private var authViewModel = AuthViewModel()
+    @State private var showToast = false
     
     var body: some View {
         ZStack {
@@ -34,7 +36,11 @@ struct LoginView: View {
                         isValid: authViewModel.isValid,
                         action: {
                             Task {
-                                try await authViewModel.login()
+                                do {
+                                    try await authViewModel.login()
+                                } catch {
+                                    showToast.toggle()
+                                }
                             }
                         }
                     )
@@ -43,6 +49,13 @@ struct LoginView: View {
                 
                 Spacer()
             }
+        }
+        .toast(isPresenting: $showToast) {
+            AlertToast(
+                displayMode: .hud,
+                type: .error(Color("accentRed")),
+                title: "Something went wrong", subTitle: "Please try again later"
+            )
         }
     }
 }
