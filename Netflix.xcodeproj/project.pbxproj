@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F7131EA02C8611E600F0F198 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7131E9F2C8611E600F0F198 /* HomeView.swift */; };
 		F722E3982C7E1BAD001ADE67 /* api.swift in Sources */ = {isa = PBXBuildFile; fileRef = F722E3972C7E1BAD001ADE67 /* api.swift */; };
 		F722E39E2C7E2B98001ADE67 /* NetworkEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = F722E39D2C7E2B98001ADE67 /* NetworkEnum.swift */; };
 		F75935342C7CEBBF00807B64 /* NetflixApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F75935332C7CEBBF00807B64 /* NetflixApp.swift */; };
@@ -25,6 +26,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F7131E9F2C8611E600F0F198 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		F722E3972C7E1BAD001ADE67 /* api.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = api.swift; sourceTree = "<group>"; };
 		F722E39D2C7E2B98001ADE67 /* NetworkEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkEnum.swift; sourceTree = "<group>"; };
 		F75935302C7CEBBF00807B64 /* Netflix.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Netflix.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -54,6 +56,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F7131E9E2C8611D500F0F198 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				F7131E9F2C8611E600F0F198 /* HomeView.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
 		F722E3942C7E1B6E001ADE67 /* API */ = {
 			isa = PBXGroup;
 			children = (
@@ -172,6 +182,7 @@
 		F7BA11212C80BC5B00D75CB4 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				F7131E9E2C8611D500F0F198 /* Home */,
 				F7BA11242C80BCD400D75CB4 /* Main */,
 				F75935452C7CECBB00807B64 /* Auth */,
 			);
@@ -289,6 +300,7 @@
 				F75935342C7CEBBF00807B64 /* NetflixApp.swift in Sources */,
 				F722E39E2C7E2B98001ADE67 /* NetworkEnum.swift in Sources */,
 				F722E3982C7E1BAD001ADE67 /* api.swift in Sources */,
+				F7131EA02C8611E600F0F198 /* HomeView.swift in Sources */,
 				F7BA112A2C80BD5100D75CB4 /* StorageService.swift in Sources */,
 				F78D3AA22C7CF7C700125476 /* CustomButton.swift in Sources */,
 			);
