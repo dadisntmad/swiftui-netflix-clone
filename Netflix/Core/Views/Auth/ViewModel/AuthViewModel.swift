@@ -25,6 +25,10 @@ import SwiftUI
         return "\(baseUrl)/session/new?api_key=\(ApiKeys.apiKey)"
     }
     
+    private var signOutBaseUrl: String {
+        return "\(baseUrl)/session?api_key=\(ApiKeys.apiKey)"
+    }
+    
     init() {
         checkAuthentication()
     }
@@ -134,6 +138,7 @@ import SwiftUI
             
         } catch {
             print("DEBUG: Login failed \(error.localizedDescription)")
+            isAuthenticated = false
             errorMessage = error.localizedDescription
             throw NetworkEnum.unknown(error)
         }
@@ -143,5 +148,38 @@ import SwiftUI
     private func checkAuthentication() {
         let sessionId = StorageService.getSessionId()
         isAuthenticated = sessionId != nil
+    }
+
+    func signOut() async throws {
+        isLoading = true
+        
+        guard let url = URL(string: signOutBaseUrl) else { throw NetworkEnum.badUrl }
+        
+        let sessionId = StorageService.getSessionId()
+        
+        let body: [String: Any] = [
+            "session_id": String(sessionId ?? "")
+        ]
+        
+        let jsonData = try JSONSerialization.data(withJSONObject: body)
+        
+        do {
+            var request = URLRequest(url: url)
+            request.httpMethod = "DELETE"
+            request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+            request.httpBody = jsonData
+            
+            let (_, response) = try await URLSession.shared.data(for: request)
+            guard (response as? HTTPURLResponse)?.statusCode == 200 else { throw NetworkEnum.badResponse }
+            
+            StorageService.deleteSessionId()
+            isAuthenticated = false
+            isLoading = false
+            
+        } catch {
+            errorMessage = error.localizedDescription
+            throw NetworkEnum.unknown(error)
+        }
+        
     }
 }

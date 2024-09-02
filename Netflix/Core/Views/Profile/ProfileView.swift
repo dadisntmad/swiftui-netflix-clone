@@ -3,6 +3,8 @@ import SwiftUI
 struct ProfileView: View {
     @Environment(\.dismiss) private var dismiss
     
+    @State private var authViewModel = AuthViewModel()
+    
     var body: some View {
         VStack {
             // app bar
@@ -81,12 +83,18 @@ struct ProfileView: View {
             
             // sign out button
             Button(action: {
-                
+                Task {
+                    try await authViewModel.signOut()
+                }
             }, label: {
-                Text("Sign Out")
-                    .font(.title3)
-                    .foregroundStyle(.gray)
-                    .fontWeight(.medium)
+                if authViewModel.isLoading {
+                    ProgressView()
+                } else {
+                    Text("Sign Out")
+                        .font(.title3)
+                        .foregroundStyle(.gray)
+                        .fontWeight(.medium)
+                }
             })
             
             Spacer()
