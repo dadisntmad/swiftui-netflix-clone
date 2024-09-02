@@ -33,7 +33,8 @@ struct HomeView: View {
                         
                         
                         NavigationLink {
-                            
+                            ProfileView()
+                                .navigationBarBackButtonHidden()
                         } label: {
                             Image("profile_image")
                                 .resizable()
