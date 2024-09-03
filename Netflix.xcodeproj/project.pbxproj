@@ -25,6 +25,8 @@
 		F7BA112A2C80BD5100D75CB4 /* StorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7BA11292C80BD5100D75CB4 /* StorageService.swift */; };
 		F7BA112D2C80BD9200D75CB4 /* KeychainSwift in Frameworks */ = {isa = PBXBuildFile; productRef = F7BA112C2C80BD9200D75CB4 /* KeychainSwift */; };
 		F7BA11302C80C1B800D75CB4 /* AlertToast in Frameworks */ = {isa = PBXBuildFile; productRef = F7BA112F2C80C1B800D75CB4 /* AlertToast */; };
+		F7BC27FC2C876303006E146B /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7BC27FB2C876303006E146B /* UserModel.swift */; };
+		F7BC28002C87639B006E146B /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7BC27FF2C87639B006E146B /* UserViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,6 +47,8 @@
 		F78D3AA62C7CFE1C00125476 /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
 		F7BA11262C80BCE900D75CB4 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		F7BA11292C80BD5100D75CB4 /* StorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageService.swift; sourceTree = "<group>"; };
+		F7BC27FB2C876303006E146B /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		F7BC27FF2C87639B006E146B /* UserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,6 +136,8 @@
 			isa = PBXGroup;
 			children = (
 				F78D3AA02C7CF7AB00125476 /* Components */,
+				F7BC27FE2C876386006E146B /* ViewModels */,
+				F7BC27FA2C8762F4006E146B /* Models */,
 				F7BA11282C80BD1900D75CB4 /* Services */,
 				F7BA11212C80BC5B00D75CB4 /* Views */,
 				F722E39C2C7E2B78001ADE67 /* Enums */,
@@ -227,6 +233,22 @@
 			path = Services;
 			sourceTree = "<group>";
 		};
+		F7BC27FA2C8762F4006E146B /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				F7BC27FB2C876303006E146B /* UserModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		F7BC27FE2C876386006E146B /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				F7BC27FF2C87639B006E146B /* UserViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -314,10 +336,12 @@
 				F75935362C7CEBBF00807B64 /* ContentView.swift in Sources */,
 				F75935342C7CEBBF00807B64 /* NetflixApp.swift in Sources */,
 				F722E39E2C7E2B98001ADE67 /* NetworkEnum.swift in Sources */,
+				F7BC28002C87639B006E146B /* UserViewModel.swift in Sources */,
 				F722E3982C7E1BAD001ADE67 /* api.swift in Sources */,
 				F7131EA52C86175E00F0F198 /* MenuItemRow.swift in Sources */,
 				F7131EA02C8611E600F0F198 /* HomeView.swift in Sources */,
 				F7BA112A2C80BD5100D75CB4 /* StorageService.swift in Sources */,
+				F7BC27FC2C876303006E146B /* UserModel.swift in Sources */,
 				F78D3AA22C7CF7C700125476 /* CustomButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

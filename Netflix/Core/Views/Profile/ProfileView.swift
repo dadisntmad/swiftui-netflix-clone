@@ -1,6 +1,8 @@
 import SwiftUI
 
 struct ProfileView: View {
+    let username: String
+    
     @Environment(\.dismiss) private var dismiss
     @Environment(AuthViewModel.self) private var authViewModel
     
@@ -16,7 +18,7 @@ struct ProfileView: View {
                 
                 Spacer()
                 
-                Text("username")
+                Text(username)
                     .font(.title3)
                     .bold()
                 
@@ -34,7 +36,7 @@ struct ProfileView: View {
                         .scaledToFill()
                         .frame(width: 75, height: 75)
                     
-                    Text("username")
+                    Text(username)
                         .font(.subheadline)
                         .bold()
                 }
@@ -103,6 +105,6 @@ struct ProfileView: View {
 }
 
 #Preview {
-    ProfileView()
+    ProfileView(username: "username")
         .environment(AuthViewModel())
 }
