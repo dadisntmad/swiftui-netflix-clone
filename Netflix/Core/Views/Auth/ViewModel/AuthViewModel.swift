@@ -1,4 +1,5 @@
 import SwiftUI
+import Observation
 
 @Observable class AuthViewModel {
     var username = ""
@@ -149,7 +150,7 @@ import SwiftUI
         let sessionId = StorageService.getSessionId()
         isAuthenticated = sessionId != nil
     }
-
+    
     func signOut() async throws {
         isLoading = true
         
@@ -180,6 +181,5 @@ import SwiftUI
             errorMessage = error.localizedDescription
             throw NetworkEnum.unknown(error)
         }
-        
     }
 }

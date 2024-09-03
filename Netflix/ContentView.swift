@@ -4,11 +4,14 @@ struct ContentView: View {
     @State private var authViewModel = AuthViewModel()
     
     var body: some View {
-        if authViewModel.isAuthenticated {
-            MainView()
-        } else {
-            LoginView()
+        Group {
+            if authViewModel.isAuthenticated {
+                MainView()
+            } else {
+                LoginView()
+            }
         }
+        .environment(authViewModel)
     }
 }
 

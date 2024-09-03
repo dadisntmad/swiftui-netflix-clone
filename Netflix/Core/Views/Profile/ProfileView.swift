@@ -2,8 +2,7 @@ import SwiftUI
 
 struct ProfileView: View {
     @Environment(\.dismiss) private var dismiss
-    
-    @State private var authViewModel = AuthViewModel()
+    @Environment(AuthViewModel.self) private var authViewModel
     
     var body: some View {
         VStack {
@@ -105,4 +104,5 @@ struct ProfileView: View {
 
 #Preview {
     ProfileView()
+        .environment(AuthViewModel())
 }

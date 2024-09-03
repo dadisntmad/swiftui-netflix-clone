@@ -2,10 +2,13 @@ import SwiftUI
 import AlertToast
 
 struct LoginView: View {
-    @State private var authViewModel = AuthViewModel()
     @State private var showToast = false
     
+    @Environment(AuthViewModel.self) private var authViewModel
+    
     var body: some View {
+        @Bindable var viewModel = authViewModel
+        
         ZStack {
             Color.gray.opacity(0.15)
                 .ignoresSafeArea(edges: .top)
@@ -23,11 +26,11 @@ struct LoginView: View {
                 Spacer()
                 
                 VStack(spacing: 24) {
-                    TextField("Username", text: $authViewModel.username)
+                    TextField("Username", text: $viewModel.username)
                         .textInputAutocapitalization(.never)
                         .textFieldViewModifier()
                     
-                    SecureField("Password", text: $authViewModel.password)
+                    SecureField("Password", text: $viewModel.password)
                         .textFieldViewModifier()
                     
                     CustomButton(
@@ -62,4 +65,5 @@ struct LoginView: View {
 
 #Preview {
     LoginView()
+        .environment(AuthViewModel())
 }
