@@ -1,18 +1,24 @@
-//
-//  MovieRowView.swift
-//  Netflix
-//
-//  Created by Ruslan Lantsov on 04.09.2024.
-//
-
 import SwiftUI
+import Kingfisher
 
 struct MovieRowView: View {
+    let movie: MovieResultModel
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack(alignment: .leading, spacing: 24) {
+            KFImage(URL(string: movie.posterPath ?? ""))
+                .resizable()
+                .scaledToFit()
+                .frame(height: 275)
+            
+            Text(movie.title)
+                .font(.title3)
+                .fontWeight(.semibold)
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
     }
 }
 
 #Preview {
-    MovieRowView()
+    MovieRowView(movie: MovieModel.MOCK_MOVIE.results[0])
 }

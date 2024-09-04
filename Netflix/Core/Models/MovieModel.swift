@@ -12,7 +12,7 @@ struct MovieModel: Codable {
     }
 }
 
-struct MovieResultModel: Codable {
+struct MovieResultModel: Codable, Identifiable, Hashable {
     let backdropPath: String?
     let genreIds: [Int]?
     let id: Int
