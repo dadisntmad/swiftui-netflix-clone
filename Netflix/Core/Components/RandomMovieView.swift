@@ -2,9 +2,11 @@ import SwiftUI
 import Kingfisher
 
 struct RandomMovieView: View {
+    let movie: MovieResultModel
+    
     var body: some View {
         NavigationStack {
-            KFImage(URL(string: "https://media.themoviedb.org/t/p/w600_and_h900_bestv2/dnpatlJrEPiDSn5fzgzvxtiSnMo.jpg"))
+            KFImage(URL(string: movie.posterPath ?? ""))
                 .resizable()
                 .scaledToFit()
                 .overlay {
@@ -13,7 +15,7 @@ struct RandomMovieView: View {
                     VStack {
                         Spacer()
                         
-                        Text("Movie Name")
+                        Text(movie.title)
                             .font(.title)
                             .bold()
                         
@@ -62,5 +64,5 @@ struct RandomMovieView: View {
 }
 
 #Preview {
-    RandomMovieView()
+    RandomMovieView(movie: MovieModel.MOCK_MOVIE.results[0])
 }

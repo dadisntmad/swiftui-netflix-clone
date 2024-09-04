@@ -6,7 +6,7 @@ struct HomeView: View {
     var body: some View {
         NavigationStack {
             ScrollView(showsIndicators: false) {
-                RandomMovieView()
+                RandomMovieView(movie: MovieModel.MOCK_MOVIE.results[0])
             }
             .toolbar(content: {
                 ToolbarItem(placement: .topBarLeading) {
