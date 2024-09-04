@@ -5,10 +5,9 @@ struct HomeView: View {
     
     var body: some View {
         NavigationStack {
-            VStack {
-                Text("Home View")
+            ScrollView(showsIndicators: false) {
+                RandomMovieView()
             }
-            
             .toolbar(content: {
                 ToolbarItem(placement: .topBarLeading) {
                     Text("For \(userViewModel.user?.username ?? "")")
