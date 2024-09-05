@@ -6,7 +6,7 @@ struct RandomMovieView: View {
     
     var body: some View {
         NavigationStack {
-            KFImage(URL(string: movie.posterPath ?? ""))
+            KFImage(URL(string: getPosterPath(path: movie.posterPath ?? "")))
                 .resizable()
                 .scaledToFit()
                 .overlay {

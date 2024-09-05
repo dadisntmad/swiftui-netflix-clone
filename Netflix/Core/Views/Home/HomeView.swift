@@ -2,18 +2,21 @@ import SwiftUI
 
 struct HomeView: View {
     @State private var userViewModel = UserViewModel()
+    @State private var homeViewModel = HomeViewModel()
     
     var body: some View {
         NavigationStack {
             ScrollView(showsIndicators: false) {
-                RandomMovieView(movie: MovieModel.MOCK_MOVIE.results[0])
+                if let randomMovie = homeViewModel.randomMovie {
+                    RandomMovieView(movie: randomMovie)
+                }
                 
                 VStack(alignment: .leading) {
                     MovieTypeTitleView(title: "Now Playing")
                     
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack {
-                            ForEach(MovieModel.MOCK_MOVIE.results, id: \.self) { movie in
+                            ForEach(homeViewModel.nowPlayingMovies) { movie in
                                 MovieRowView(movie: movie)
                             }
                         }
@@ -26,7 +29,7 @@ struct HomeView: View {
                     
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack {
-                            ForEach(MovieModel.MOCK_MOVIE.results, id: \.self) { movie in
+                            ForEach(homeViewModel.popularMovies) { movie in
                                 MovieRowView(movie: movie)
                             }
                         }
@@ -39,7 +42,7 @@ struct HomeView: View {
                     
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack {
-                            ForEach(MovieModel.MOCK_MOVIE.results, id: \.self) { movie in
+                            ForEach(homeViewModel.topRatedMovies) { movie in
                                 MovieRowView(movie: movie)
                             }
                         }

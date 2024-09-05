@@ -6,7 +6,7 @@ struct MovieRowView: View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: 24) {
-            KFImage(URL(string: movie.posterPath ?? ""))
+            KFImage(URL(string: getPosterPath(path: movie.posterPath ?? "")))
                 .resizable()
                 .scaledToFit()
                 .frame(height: 275)
