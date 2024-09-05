@@ -16,7 +16,7 @@ struct MainView: View {
                     )
                 }
             
-            Text("New & Hot")
+            NewAndHotView()
                 .tabItem {
                     Label(
                         title: {
