@@ -1,9 +1,11 @@
 import SwiftUI
 
 struct MainView: View {
+    @Environment(UserViewModel.self) private var userViewModel
+    
     var body: some View {
         TabView {
-            HomeView()
+            HomeView(username: userViewModel.user?.username ?? "")
                 .tabItem {
                     Label(
                         title: {
@@ -16,7 +18,7 @@ struct MainView: View {
                     )
                 }
             
-            NewAndHotView()
+            NewAndHotView(username: userViewModel.user?.username ?? "")
                 .tabItem {
                     Label(
                         title: {
@@ -48,4 +50,5 @@ struct MainView: View {
 
 #Preview {
     MainView()
+        .environment(UserViewModel())
 }

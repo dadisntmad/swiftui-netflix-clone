@@ -1,6 +1,10 @@
 import SwiftUI
 
 struct NewAndHotView: View {
+    var username: String
+    
+    @State private var upcomingMovieViewModel = NewAndHotViewModel()
+    
     var body: some View {
         NavigationStack {
             ScrollView(showsIndicators: false) {
@@ -14,7 +18,7 @@ struct NewAndHotView: View {
                     .frame(maxWidth: .infinity, alignment: .leading)
                     
                     LazyVStack {
-                        ForEach(MovieModel.MOCK_MOVIE.results, id: \.self) { movie in
+                        ForEach(upcomingMovieViewModel.upcomingMovies) { movie in
                             UpcomingMovieView(movie: movie)
                         }
                     }
@@ -44,7 +48,7 @@ struct NewAndHotView: View {
                         
                         
                         NavigationLink {
-                            ProfileView(username: "username")
+                            ProfileView(username: username)
                                 .navigationBarBackButtonHidden()
                         } label: {
                             Image("profile_image")
@@ -61,5 +65,5 @@ struct NewAndHotView: View {
 }
 
 #Preview {
-    NewAndHotView()
+    NewAndHotView(username: "username")
 }

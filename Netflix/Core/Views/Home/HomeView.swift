@@ -1,7 +1,8 @@
 import SwiftUI
 
 struct HomeView: View {
-    @State private var userViewModel = UserViewModel()
+    var username: String
+    
     @State private var homeViewModel = HomeViewModel()
     
     var body: some View {
@@ -52,7 +53,7 @@ struct HomeView: View {
             }
             .toolbar(content: {
                 ToolbarItem(placement: .topBarLeading) {
-                    Text("For \(userViewModel.user?.username ?? "")")
+                    Text("For \(username)")
                         .font(.title3)
                         .bold()
                 }
@@ -74,7 +75,7 @@ struct HomeView: View {
                         
                         
                         NavigationLink {
-                            ProfileView(username: userViewModel.user?.username ?? "")
+                            ProfileView(username: username)
                                 .navigationBarBackButtonHidden()
                         } label: {
                             Image("profile_image")
@@ -91,5 +92,5 @@ struct HomeView: View {
 }
 
 #Preview {
-    HomeView()
+    HomeView(username: "username")
 }
