@@ -14,12 +14,12 @@ struct UpcomingMovieView: View {
                 .clipShape(RoundedRectangle(cornerRadius: 4))
             
             HStack(spacing: 4) {
-                Text("Sep")
+                Text(DateConverter.getReleaseDate(dateString: movie.releaseDate ?? "", isDay: false))
                     .font(.subheadline)
                     .foregroundStyle(.gray)
                     .fontWeight(.semibold)
                 
-                Text("5")
+                Text(DateConverter.getReleaseDate(dateString: movie.releaseDate ?? "", isDay: true))
                     .bold()
             }
             .padding(.bottom, 4)
