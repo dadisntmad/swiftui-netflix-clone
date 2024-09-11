@@ -18,7 +18,7 @@ struct NewAndHotView: View {
                     .frame(maxWidth: .infinity, alignment: .leading)
                     
                     LazyVStack {
-                        ForEach(upcomingMovieViewModel.upcomingMovies) { movie in
+                        ForEach(upcomingMovieViewModel.sortedAndFilteredUpcomingMovies) { movie in
                             UpcomingMovieView(movie: movie)
                         }
                     }
