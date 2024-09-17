@@ -13,6 +13,7 @@ struct SearchView: View {
                 HStack {
                     Button(action: {
                         dismiss()
+                        searchViewModel.clearSearch()
                     }, label: {
                         Image(systemName: "arrow.left")
                             .foregroundColor(.white)

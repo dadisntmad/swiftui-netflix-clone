@@ -17,6 +17,7 @@ struct SearchMovieRow: View {
                 Text(movie.title)
                     .font(.subheadline)
                     .bold()
+                    .lineLimit(1)
             }
             
             Spacer()

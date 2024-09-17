@@ -20,12 +20,6 @@ import SwiftUI
         return "\(baseUrl)?query=\(query)&api_key=\(ApiKeys.apiKey)"
     }
     
-    init() {
-        Task {
-            try await searchMovie()
-        }
-    }
-    
     private func debounceSearch() async {
         debounce?.cancel()
         debounce = Task {
@@ -55,6 +49,13 @@ import SwiftUI
         } catch {
             print("DEBUG: \(error.localizedDescription)")
             throw NetworkEnum.unknown(error)
+        }
+    }
+    
+    func clearSearch() {
+        if !query.trimmingCharacters(in: .whitespaces).isEmpty {
+            query = ""
+            movies = []
         }
     }
 }
