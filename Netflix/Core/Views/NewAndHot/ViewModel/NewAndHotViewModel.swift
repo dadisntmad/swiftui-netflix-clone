@@ -2,13 +2,13 @@ import Foundation
 import Observation
 
 @Observable class NewAndHotViewModel {
-    
-    var upcomingMovies: [MovieResultModel] = []
+    private var upcomingMovies: [MovieResultModel] = []
+    private var currentPage = 0
     
     private var baseUrl = "https://api.themoviedb.org/3/movie"
     
     private var upcomingMoviesBaseUrl: String {
-        return "\(baseUrl)/upcoming?api_key=\(ApiKeys.apiKey)"
+        return "\(baseUrl)/upcoming?page=\(currentPage)&api_key=\(ApiKeys.apiKey)"
     }
     
     var sortedAndFilteredUpcomingMovies: [MovieResultModel] {
@@ -26,7 +26,7 @@ import Observation
                     
                     if let movieYear = movieComponents.year, let movieMonth = movieComponents.month,
                        let currentYear = currentComponents.year, let currentMonth = currentComponents.month {
-        
+                        
                         return movieYear > currentYear || (movieYear == currentYear && movieMonth >= currentMonth)
                     }
                 }
@@ -47,7 +47,8 @@ import Observation
         }
     }
     
-    private func fetchUpcomingMovies() async throws {
+    func fetchUpcomingMovies() async throws {
+        currentPage += 1
         guard let url = URL(string: upcomingMoviesBaseUrl) else { throw NetworkEnum.badUrl }
         
         do {
@@ -56,7 +57,7 @@ import Observation
             
             let movie = try JSONDecoder().decode(MovieModel.self, from: data)
             
-            upcomingMovies = movie.results
+            upcomingMovies.append(contentsOf: movie.results)
             
         } catch {
             print("DEBUG: \(error.localizedDescription)")

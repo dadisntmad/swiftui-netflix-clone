@@ -20,6 +20,13 @@ struct NewAndHotView: View {
                     LazyVStack {
                         ForEach(upcomingMovieViewModel.sortedAndFilteredUpcomingMovies) { movie in
                             UpcomingMovieView(movie: movie)
+                                .onAppear {
+                                    if movie.id == upcomingMovieViewModel.sortedAndFilteredUpcomingMovies.last?.id {
+                                        Task {
+                                            try await upcomingMovieViewModel.fetchUpcomingMovies()
+                                        }
+                                    }
+                                }
                         }
                     }
                 }
@@ -40,7 +47,8 @@ struct NewAndHotView: View {
                         }
                         
                         NavigationLink {
-                            
+                            SearchView()
+                                .navigationBarBackButtonHidden()
                         } label: {
                             Image("search")
                                 .renderingMode(.template)

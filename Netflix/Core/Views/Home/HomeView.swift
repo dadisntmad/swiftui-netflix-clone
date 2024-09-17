@@ -67,7 +67,8 @@ struct HomeView: View {
                         }
                         
                         NavigationLink {
-                            
+                            SearchView()
+                                .navigationBarBackButtonHidden()
                         } label: {
                             Image("search")
                                 .renderingMode(.template)
