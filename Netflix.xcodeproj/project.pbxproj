@@ -39,6 +39,7 @@
 		F7D297FC2C89F7F7001AF391 /* GetPosterPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D297FB2C89F7F7001AF391 /* GetPosterPath.swift */; };
 		F7D298002C89FE54001AF391 /* NewAndHotView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D297FF2C89FE54001AF391 /* NewAndHotView.swift */; };
 		F7D298022C8A017D001AF391 /* UpcomingMovieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D298012C8A017D001AF391 /* UpcomingMovieView.swift */; };
+		F7DE7E102C99CB25003D8B05 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7DE7E0F2C99CB25003D8B05 /* SearchViewModel.swift */; };
 		F7FF7DDD2C8F489600F8C1A2 /* NewAndHotViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7FF7DDC2C8F489600F8C1A2 /* NewAndHotViewModel.swift */; };
 /* End PBXBuildFile section */
 
@@ -73,6 +74,7 @@
 		F7D297FB2C89F7F7001AF391 /* GetPosterPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetPosterPath.swift; sourceTree = "<group>"; };
 		F7D297FF2C89FE54001AF391 /* NewAndHotView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewAndHotView.swift; sourceTree = "<group>"; };
 		F7D298012C8A017D001AF391 /* UpcomingMovieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingMovieView.swift; sourceTree = "<group>"; };
+		F7DE7E0F2C99CB25003D8B05 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		F7FF7DDC2C8F489600F8C1A2 /* NewAndHotViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewAndHotViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -143,6 +145,7 @@
 		F7249CA92C986EAE00A69B64 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				F7DE7E0F2C99CB25003D8B05 /* SearchViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -441,6 +444,7 @@
 				F77A07062C9090D0004D8DA4 /* DateConverter.swift in Sources */,
 				F722E3982C7E1BAD001ADE67 /* api.swift in Sources */,
 				F7131EA52C86175E00F0F198 /* MenuItemRow.swift in Sources */,
+				F7DE7E102C99CB25003D8B05 /* SearchViewModel.swift in Sources */,
 				F7FF7DDD2C8F489600F8C1A2 /* NewAndHotViewModel.swift in Sources */,
 				F7B0A9B32C88C861005DF424 /* MovieTypeTitleView.swift in Sources */,
 				F7249CAB2C986EBC00A69B64 /* SearchView.swift in Sources */,

@@ -7,11 +7,10 @@ struct SearchMovieRow: View {
     var body: some View {
         HStack {
             HStack {
-                KFImage(URL(string: getPosterPath(path: movie.posterPath ?? "")))
+                KFImage(URL(string: getPosterPath(path: movie.backdropPath ?? "")))
                     .resizable()
                     .scaledToFill()
-                    .frame(height: 100)
-                    .frame(maxWidth: 170)
+                    .frame(width: 170, height: 100)
                     .clipped()
                     .clipShape(RoundedRectangle(cornerRadius: 8))
                 

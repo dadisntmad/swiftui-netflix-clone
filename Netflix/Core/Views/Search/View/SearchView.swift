@@ -1,11 +1,13 @@
 import SwiftUI
 
 struct SearchView: View {
-    @State private var query = ""
-    
     @Environment(\.dismiss) private var dismiss
     
+    private var searchViewModel = SearchViewModel()
+    
     var body: some View {
+        @Bindable var viewModel = searchViewModel
+        
         NavigationStack {
             VStack {
                 HStack {
@@ -16,14 +18,14 @@ struct SearchView: View {
                             .foregroundColor(.white)
                     })
                     
-                    TextField("Search", text: $query)
+                    TextField("Search", text: $viewModel.query)
                         .textInputAutocapitalization(.never)
                         .frame(height: 2)
                         .textFieldViewModifier()
                 }
                 .padding(.horizontal)
                 
-                if query.trimmingCharacters(in: .whitespaces).isEmpty {
+                if searchViewModel.query.trimmingCharacters(in: .whitespaces).isEmpty {
                     Spacer()
                     
                     Text("Start searching...")
@@ -34,8 +36,9 @@ struct SearchView: View {
                 } else {
                     ScrollView(showsIndicators: false) {
                         LazyVStack {
-                            ForEach(MovieModel.MOCK_MOVIE.results) { movie in
+                            ForEach(searchViewModel.movies) { movie in
                                 SearchMovieRow(movie: movie)
+                                    .padding(.vertical, 5)
                             }
                         }
                     }
