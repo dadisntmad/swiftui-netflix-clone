@@ -18,7 +18,9 @@ struct HomeView: View {
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack {
                             ForEach(homeViewModel.nowPlayingMovies) { movie in
-                                MovieRowView(movie: movie)
+                                NavigationLink(destination: MovieDetailsView(movie: movie)) {
+                                    MovieRowView(movie: movie)
+                                }
                             }
                         }
                     }
@@ -31,7 +33,9 @@ struct HomeView: View {
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack {
                             ForEach(homeViewModel.popularMovies) { movie in
-                                MovieRowView(movie: movie)
+                                NavigationLink(destination: MovieDetailsView(movie: movie)) {
+                                    MovieRowView(movie: movie)
+                                }
                             }
                         }
                     }
@@ -44,7 +48,9 @@ struct HomeView: View {
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack {
                             ForEach(homeViewModel.topRatedMovies) { movie in
-                                MovieRowView(movie: movie)
+                                NavigationLink(destination: MovieDetailsView(movie: movie)) {
+                                    MovieRowView(movie: movie)
+                                }
                             }
                         }
                     }

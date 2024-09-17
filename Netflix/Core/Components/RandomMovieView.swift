@@ -23,7 +23,7 @@ struct RandomMovieView: View {
                         
                         HStack {
                             NavigationLink {
-                                
+                                MovieDetailsView(movie: movie)
                             } label: {
                                 HStack {
                                     Image(systemName: "play.fill")

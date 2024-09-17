@@ -19,14 +19,16 @@ struct NewAndHotView: View {
                     
                     LazyVStack {
                         ForEach(upcomingMovieViewModel.sortedAndFilteredUpcomingMovies) { movie in
-                            UpcomingMovieView(movie: movie)
-                                .onAppear {
-                                    if movie.id == upcomingMovieViewModel.sortedAndFilteredUpcomingMovies.last?.id {
-                                        Task {
-                                            try await upcomingMovieViewModel.fetchUpcomingMovies()
+                            NavigationLink(destination: MovieDetailsView(movie: movie)) {
+                                UpcomingMovieView(movie: movie)
+                                    .onAppear {
+                                        if movie.id == upcomingMovieViewModel.sortedAndFilteredUpcomingMovies.last?.id {
+                                            Task {
+                                                try await upcomingMovieViewModel.fetchUpcomingMovies()
+                                            }
                                         }
                                     }
-                                }
+                            }
                         }
                     }
                 }

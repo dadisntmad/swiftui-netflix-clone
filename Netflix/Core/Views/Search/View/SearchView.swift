@@ -38,8 +38,11 @@ struct SearchView: View {
                     ScrollView(showsIndicators: false) {
                         LazyVStack {
                             ForEach(searchViewModel.movies) { movie in
-                                SearchMovieRow(movie: movie)
-                                    .padding(.vertical, 5)
+                                NavigationLink(destination: MovieDetailsView(movie: movie)) {
+                                    SearchMovieRow(movie: movie)
+                                        .tint(.white)
+                                        .padding(.vertical, 5)
+                                }
                             }
                         }
                     }
