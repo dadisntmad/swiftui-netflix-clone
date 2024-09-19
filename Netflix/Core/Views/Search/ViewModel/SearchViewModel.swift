@@ -6,21 +6,27 @@ import SwiftUI
     
     var query = "" {
         didSet {
+            if query != oldValue {
+                page = 0
+            }
             Task {
                 await debounceSearch()
             }
         }
     }
     
+    
     var movies: [MovieResultModel] = []
+    var page = 0
     
     private var debounce: Task<Void, Never>?
     
     private var searchBaseUrl: String {
-        return "\(baseUrl)?query=\(query)&api_key=\(ApiKeys.apiKey)"
+        return "\(baseUrl)?query=\(query)&page=\(page)&api_key=\(ApiKeys.apiKey)"
     }
     
-    private func debounceSearch() async {
+    func debounceSearch() async {
+        guard !query.trimmingCharacters(in: .whitespaces).isEmpty else { return }
         debounce?.cancel()
         debounce = Task {
             try? await Task.sleep(nanoseconds: 500_000_000)
@@ -30,12 +36,18 @@ import SwiftUI
         }
     }
     
+    
     private func searchMovie() async throws {
         guard !query.trimmingCharacters(in: .whitespaces).isEmpty else {
             movies = []
             return
         }
         
+        if page == 0 {
+            movies = []
+        }
+        
+        page += 1
         guard let url = URL(string: searchBaseUrl) else { throw NetworkEnum.badUrl }
         
         do {
@@ -44,7 +56,7 @@ import SwiftUI
             
             let movie = try JSONDecoder().decode(MovieModel.self, from: data)
             
-            movies = movie.results
+            movies.append(contentsOf: movie.results)
             
         } catch {
             print("DEBUG: \(error.localizedDescription)")
@@ -53,9 +65,10 @@ import SwiftUI
     }
     
     func clearSearch() {
-        if !query.trimmingCharacters(in: .whitespaces).isEmpty {
+        if !query.trimmingCharacters(in: .whitespaces).isEmpty  {
             query = ""
             movies = []
+            page = 0
         }
     }
 }

@@ -42,6 +42,13 @@ struct SearchView: View {
                                     SearchMovieRow(movie: movie)
                                         .tint(.white)
                                         .padding(.vertical, 5)
+                                        .onAppear {
+                                            if searchViewModel.movies.last?.id == movie.id {
+                                                Task {
+                                                    await searchViewModel.debounceSearch()
+                                                }
+                                            }
+                                        }
                                 }
                             }
                         }
