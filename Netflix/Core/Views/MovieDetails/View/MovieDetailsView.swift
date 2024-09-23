@@ -38,7 +38,7 @@ struct MovieDetailsView: View {
             
             VStack(alignment: .leading, spacing: 8) {
                 // title & genres
-                Text("John Wick: Chapter 4")
+                Text(movie.title)
                     .font(.title3)
                     .bold()
                 
@@ -62,7 +62,7 @@ struct MovieDetailsView: View {
                 )
                 
                 // overview
-                Text("Certified Fresh audience score. John Wick (Keanu Reeves) uncovers a path to defeating The High Table. But before he can earn his freedom, Wick must face off against a new enemy with powerful alliances across the globe and forces that turn old friends into foes.")
+                Text(movie.overview ?? "")
                     .multilineTextAlignment(.leading)
                     .font(.subheadline)
                     .padding(.top, 12)
