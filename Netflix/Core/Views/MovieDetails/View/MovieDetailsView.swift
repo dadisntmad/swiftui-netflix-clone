@@ -69,8 +69,8 @@ struct MovieDetailsView: View {
                     .padding(.bottom, 8)
                 
                 // cast & director
-                ExpandableTextView(text: "Cast: Keanu Reeves, Keanu Reeves, Keanu Reeves, Keanu Reeves, Keanu Reeves")
-                ExpandableTextView(text: "Director: Keanu Reeves, Keanu Reeves, Keanu Reeves, Keanu Reeves, Keanu Reeves")
+                ExpandableTextView(text: "Cast: \(viewModel.castNames)")
+                ExpandableTextView(text: "Director: \(viewModel.crewNames)")
                 
                 HStack(spacing: 32) {
                     MovieInfoButton(
