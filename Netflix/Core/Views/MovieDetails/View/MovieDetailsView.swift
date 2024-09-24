@@ -4,13 +4,13 @@ import Kingfisher
 struct MovieDetailsView: View {
     @Environment(\.dismiss) private var dismiss
     
-    let movie: MovieResultModel
+    let movieId: Int
     
     @State private var viewModel: MovieDetailsViewModel
     
-    init(movie: MovieResultModel) {
-        self.movie = movie
-        self.viewModel = MovieDetailsViewModel(movieId: movie.id)
+    init(movieId: Int) {
+        self.movieId = movieId
+        self.viewModel = MovieDetailsViewModel(movieId: movieId)
     }
     
     var body: some View {
@@ -38,11 +38,11 @@ struct MovieDetailsView: View {
             
             VStack(alignment: .leading, spacing: 8) {
                 // title & genres
-                Text(movie.title)
+                Text(viewModel.movie?.title ?? "")
                     .font(.title3)
                     .bold()
                 
-                Text("2023 Action, Triller, Crime")
+                Text(viewModel.movieInfo)
                     .font(.subheadline)
                     .fontWeight(.medium)
                 
@@ -62,7 +62,7 @@ struct MovieDetailsView: View {
                 )
                 
                 // overview
-                Text(movie.overview ?? "")
+                Text(viewModel.movie?.overview ?? "")
                     .multilineTextAlignment(.leading)
                     .font(.subheadline)
                     .padding(.top, 12)
@@ -109,6 +109,6 @@ struct MovieDetailsView: View {
 }
 
 #Preview {
-    MovieDetailsView(movie: MovieModel.MOCK_MOVIE.results[0])
+    MovieDetailsView(movieId: 1231233)
 }
 

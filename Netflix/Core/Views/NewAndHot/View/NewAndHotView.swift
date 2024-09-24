@@ -19,7 +19,7 @@ struct NewAndHotView: View {
                     
                     LazyVStack {
                         ForEach(upcomingMovieViewModel.sortedAndFilteredUpcomingMovies) { movie in
-                            NavigationLink(destination: MovieDetailsView(movie: movie)) {
+                            NavigationLink(destination: MovieDetailsView(movieId: movie.id)) {
                                 UpcomingMovieView(movie: movie)
                                     .onAppear {
                                         if movie.id == upcomingMovieViewModel.sortedAndFilteredUpcomingMovies.last?.id {

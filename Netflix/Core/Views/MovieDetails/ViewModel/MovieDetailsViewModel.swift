@@ -4,8 +4,10 @@ import SwiftUI
 @Observable class MovieDetailsViewModel {
     private var baseUrl = "https://api.themoviedb.org/3/movie"
     
-    private var movieId: Int
+    var movie: MovieDetailsModel?
     var movies: [MovieResultModel] = []
+    
+    private var movieId: Int
     private var cast: [CastModel] = []
     private var crew: [CrewModel] = []
     
@@ -17,6 +19,10 @@ import SwiftUI
         return "\(baseUrl)/\(movieId)/credits?api_key=\(ApiKeys.apiKey)"
     }
     
+    private var movieDetailsBaseUrl: String {
+        return "\(baseUrl)/\(movieId)?api_key=\(ApiKeys.apiKey)"
+    }
+    
     var castNames: String {
         return cast.map({ $0.name }).joined(separator: ", ")
     }
@@ -25,12 +31,46 @@ import SwiftUI
         return cast.map { $0.name }.joined(separator: ", ")
     }
     
+    var movieInfo: String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        let calendar = Calendar.current
+        
+        var releaseYear = ""
+        
+        if let releaseDate = movie?.releaseDate,
+           let date = formatter.date(from: releaseDate) {
+            let year = calendar.dateComponents([.year], from: date).year
+            releaseYear = year.map { String($0) } ?? "Unknown"
+        }
+        
+        let genres = movie?.genres.map({ $0.name }).joined(separator: " · ") ?? ""
+        
+        return "\(releaseYear) \(genres)"
+    }
+    
     init(movieId: Int) {
         self.movieId = movieId
         
         Task {
+            try await fetchMovieDetails()
             try await fetchSimilarMovies()
             try await fetchCredits()
+        }
+    }
+    
+    private func fetchMovieDetails() async throws {
+        guard let url = URL(string: movieDetailsBaseUrl) else { throw NetworkEnum.badUrl }
+        
+        do {
+            let (data, response) = try await URLSession.shared.data(from: url)
+            guard (response as? HTTPURLResponse)?.statusCode == 200 else { throw NetworkEnum.badResponse }
+            let movie = try JSONDecoder().decode(MovieDetailsModel.self, from: data)
+            self.movie = movie
+            
+        } catch {
+            print("DEBUG: \(error.localizedDescription)")
+            throw NetworkEnum.unknown(error)
         }
     }
     
