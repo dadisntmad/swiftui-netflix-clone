@@ -27,6 +27,7 @@
 		F78D3AA22C7CF7C700125476 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F78D3AA12C7CF7C700125476 /* CustomButton.swift */; };
 		F78D3AA42C7CFA0600125476 /* CustomButtonViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = F78D3AA32C7CFA0600125476 /* CustomButtonViewModifier.swift */; };
 		F78D3AA72C7CFE1C00125476 /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F78D3AA62C7CFE1C00125476 /* AuthViewModel.swift */; };
+		F79452C32CA46D0200D8ED5D /* VideoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F79452C22CA46D0200D8ED5D /* VideoModel.swift */; };
 		F7B0A9A82C88B5CA005DF424 /* RandomMovieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B0A9A72C88B5CA005DF424 /* RandomMovieView.swift */; };
 		F7B0A9AB2C88B623005DF424 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = F7B0A9AA2C88B623005DF424 /* Kingfisher */; };
 		F7B0A9AF2C88C07B005DF424 /* MovieModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B0A9AE2C88C07B005DF424 /* MovieModel.swift */; };
@@ -73,6 +74,7 @@
 		F78D3AA12C7CF7C700125476 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		F78D3AA32C7CFA0600125476 /* CustomButtonViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButtonViewModifier.swift; sourceTree = "<group>"; };
 		F78D3AA62C7CFE1C00125476 /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
+		F79452C22CA46D0200D8ED5D /* VideoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoModel.swift; sourceTree = "<group>"; };
 		F7B0A9A72C88B5CA005DF424 /* RandomMovieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomMovieView.swift; sourceTree = "<group>"; };
 		F7B0A9AE2C88C07B005DF424 /* MovieModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieModel.swift; sourceTree = "<group>"; };
 		F7B0A9B02C88C567005DF424 /* MovieRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieRowView.swift; sourceTree = "<group>"; };
@@ -332,6 +334,7 @@
 				F7B0A9AE2C88C07B005DF424 /* MovieModel.swift */,
 				F7D6689F2CA1C89A008786AA /* MovieTeamModel.swift */,
 				F7C5AD302CA3067D00053E5A /* MovieDetailsModel.swift */,
+				F79452C22CA46D0200D8ED5D /* VideoModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -485,6 +488,7 @@
 				F7131EA32C86144A00F0F198 /* ProfileView.swift in Sources */,
 				F75935492C7CECF000807B64 /* LoginView.swift in Sources */,
 				F73A718D2C9C76520014D68F /* MovieInfoButton.swift in Sources */,
+				F79452C32CA46D0200D8ED5D /* VideoModel.swift in Sources */,
 				F73A718B2C9C73660014D68F /* ExpandableTextView.swift in Sources */,
 				F759354D2C7CF52E00807B64 /* TextFieldViewModifier.swift in Sources */,
 				F7BA11272C80BCE900D75CB4 /* MainView.swift in Sources */,
