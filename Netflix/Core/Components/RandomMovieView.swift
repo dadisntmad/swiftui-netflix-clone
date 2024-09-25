@@ -24,6 +24,7 @@ struct RandomMovieView: View {
                         HStack {
                             NavigationLink {
                                 MovieDetailsView(movieId: movie.id)
+                                    .navigationBarBackButtonHidden()
                             } label: {
                                 HStack {
                                     Image(systemName: "play.fill")

@@ -38,7 +38,7 @@ struct SearchView: View {
                     ScrollView(showsIndicators: false) {
                         LazyVStack {
                             ForEach(searchViewModel.movies) { movie in
-                                NavigationLink(destination: MovieDetailsView(movieId: movie.id)) {
+                                NavigationLink(destination: MovieDetailsView(movieId: movie.id).navigationBarBackButtonHidden()) {
                                     SearchMovieRow(movie: movie)
                                         .tint(.white)
                                         .padding(.vertical, 5)

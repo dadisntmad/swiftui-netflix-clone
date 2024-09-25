@@ -27,7 +27,7 @@ struct MovieDetailsView: View {
                     )
                 )
                 .frame(height: 250)
-           
+                
                 Button {
                     dismiss()
                 } label: {
