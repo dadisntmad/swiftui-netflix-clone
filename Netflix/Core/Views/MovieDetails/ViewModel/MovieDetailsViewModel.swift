@@ -20,7 +20,7 @@ import SwiftUI
     }
     
     private var movieDetailsBaseUrl: String {
-        return "\(baseUrl)/\(movieId)?api_key=\(ApiKeys.apiKey)"
+        return "\(baseUrl)/\(movieId)?append_to_response=videos&api_key=\(ApiKeys.apiKey)"
     }
     
     var castNames: String {
@@ -29,6 +29,10 @@ import SwiftUI
     
     var crewNames: String {
         return cast.map { $0.name }.joined(separator: ", ")
+    }
+    
+    var videoKey: String? {
+        return movie?.videos.results.first(where: ({ $0.type == "Trailer" && $0.site == "YouTube" }))?.key
     }
     
     var movieInfo: String {

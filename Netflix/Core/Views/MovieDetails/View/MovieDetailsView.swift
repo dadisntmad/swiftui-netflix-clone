@@ -1,5 +1,5 @@
 import SwiftUI
-import Kingfisher
+import YouTubePlayerKit
 
 struct MovieDetailsView: View {
     @Environment(\.dismiss) private var dismiss
@@ -17,11 +17,17 @@ struct MovieDetailsView: View {
         ScrollView(showsIndicators: false) {
             // video player
             ZStack(alignment: .topTrailing) {
-                KFImage(URL(string: "https://c4.wallpaperflare.com/wallpaper/82/204/3/keanu-reeves-john-wick-movies-john-wick-chapter-2-wallpaper-preview.jpg"))
-                    .resizable()
-                    .scaledToFill()
-                    .frame(maxWidth: .infinity)
-                
+                YouTubePlayerView(
+                    YouTubePlayer(
+                        source: .video(id: viewModel.videoKey ?? ""),
+                        configuration: .init(
+                            autoPlay: false,
+                            showFullscreenButton: true
+                        )
+                    )
+                )
+                .frame(height: 250)
+           
                 Button {
                     dismiss()
                 } label: {
