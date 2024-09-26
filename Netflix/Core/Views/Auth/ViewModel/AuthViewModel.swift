@@ -134,7 +134,7 @@ import Observation
             
             if !sessionId.isEmpty {
                 isAuthenticated = true
-                StorageService.setSessionId(sessionId: sessionId)
+                StorageService.setValue(value: sessionId, keyType: .sessionId)
             }
             
         } catch {
@@ -147,7 +147,7 @@ import Observation
     
     
     private func checkAuthentication() {
-        let sessionId = StorageService.getSessionId()
+        let sessionId = StorageService.getValue(keyType: .sessionId)
         isAuthenticated = sessionId != nil
     }
     
@@ -156,7 +156,7 @@ import Observation
         
         guard let url = URL(string: signOutBaseUrl) else { throw NetworkEnum.badUrl }
         
-        let sessionId = StorageService.getSessionId()
+        let sessionId = StorageService.getValue(keyType: .sessionId)
         
         let body: [String: Any] = [
             "session_id": String(sessionId ?? "")
@@ -173,7 +173,7 @@ import Observation
             let (_, response) = try await URLSession.shared.data(for: request)
             guard (response as? HTTPURLResponse)?.statusCode == 200 else { throw NetworkEnum.badResponse }
             
-            StorageService.deleteSessionId()
+            StorageService.deleteValue(keyType: .sessionId)
             isAuthenticated = false
             isLoading = false
             

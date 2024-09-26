@@ -5,15 +5,15 @@ class StorageService {
     
     let shared = StorageService()
     
-    static func setSessionId(sessionId: String) {
-        keychain.set(sessionId, forKey: "sessionId")
+    static func setValue(value: String, keyType: StorageKeyTypeEnum) {
+        keychain.set(value, forKey: keyType.rawValue)
     }
     
-    static func getSessionId() -> String? {
-        return keychain.get("sessionId")
+    static func getValue(keyType: StorageKeyTypeEnum) -> String? {
+        return keychain.get(keyType.rawValue)
     }
     
-    static func deleteSessionId() {
-        keychain.delete("sessionId")
+    static func deleteValue(keyType: StorageKeyTypeEnum) {
+        keychain.delete(keyType.rawValue)
     }
 }

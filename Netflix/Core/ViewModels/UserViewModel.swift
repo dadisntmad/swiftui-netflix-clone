@@ -13,7 +13,7 @@ import Observation
     }
     
     private func getCurrentUser() async throws -> UserModel {
-        let sessionId = StorageService.getSessionId()
+        let sessionId = StorageService.getValue(keyType: .sessionId)
         
         guard let sessionId = sessionId else { throw URLError(.unknown) }
         
@@ -24,6 +24,9 @@ import Observation
             guard (response as? HTTPURLResponse)?.statusCode == 200 else { throw NetworkEnum.badResponse }
             
             let user = try JSONDecoder().decode(UserModel.self, from: data)
+            
+            StorageService.setValue(value: String(user.id), keyType: .accountId)
+            
             return user
             
         } catch {
