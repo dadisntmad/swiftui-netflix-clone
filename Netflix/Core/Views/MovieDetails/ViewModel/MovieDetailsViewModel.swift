@@ -108,4 +108,34 @@ import SwiftUI
             throw NetworkEnum.unknown(error)
         }
     }
+    
+    func addToFavorites(isFavorite: Bool) async throws {
+        guard let accountId = StorageService.getValue(keyType: .accountId) else { return }
+        guard let sessionId = StorageService.getValue(keyType: .sessionId) else { return }
+        
+        let url = "https://api.themoviedb.org/3/account/\(accountId)/favorite?session_id=\(sessionId)&api_key=\(ApiKeys.apiKey)"
+        
+        guard let url = URL(string: url) else { throw NetworkEnum.badUrl }
+        
+        let body: [String: Any] = [
+            "media_type": "movie",
+            "media_id": movieId,
+            "favorite": isFavorite
+        ]
+        
+        let jsonData = try JSONSerialization.data(withJSONObject: body)
+    
+        do {
+            var request = URLRequest(url: url)
+            request.httpMethod = "POST"
+            request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+            request.httpBody = jsonData
+            
+            let (_, _) = try await URLSession.shared.data(for: request)
+           
+        } catch  {
+            print("DEBUG: \(error.localizedDescription)")
+            throw NetworkEnum.unknown(error)
+        }
+    }
 }
