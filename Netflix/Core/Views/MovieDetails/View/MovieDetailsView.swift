@@ -7,7 +7,6 @@ struct MovieDetailsView: View {
     let movieId: Int
     
     @State private var viewModel: MovieDetailsViewModel
-    @State private var isFavorite = false
     
     init(movieId: Int) {
         self.movieId = movieId
@@ -81,12 +80,11 @@ struct MovieDetailsView: View {
                 
                 HStack(spacing: 32) {
                     MovieInfoButton(
-                        iconName: isFavorite ? "checkmark" : "plus",
+                        iconName: viewModel.isFavorite ? "checkmark" : "plus",
                         label: "My List",
                         action: {
                             Task {
-                                isFavorite.toggle()
-                                try await viewModel.addToFavorites(isFavorite: isFavorite)
+                                try await viewModel.addToFavorites()
                             }
                         }
                     )

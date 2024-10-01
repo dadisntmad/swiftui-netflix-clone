@@ -6,6 +6,7 @@ import SwiftUI
     
     var movie: MovieDetailsModel?
     var movies: [MovieResultModel] = []
+    var isFavorite = false
     
     private var movieId: Int
     private var cast: [CastModel] = []
@@ -60,6 +61,7 @@ import SwiftUI
             try await fetchMovieDetails()
             try await fetchSimilarMovies()
             try await fetchCredits()
+            try await checkIfMovieIsFavorite()
         }
     }
     
@@ -109,7 +111,7 @@ import SwiftUI
         }
     }
     
-    func addToFavorites(isFavorite: Bool) async throws {
+    func addToFavorites() async throws {
         guard let accountId = StorageService.getValue(keyType: .accountId) else { return }
         guard let sessionId = StorageService.getValue(keyType: .sessionId) else { return }
         
@@ -124,16 +126,36 @@ import SwiftUI
         ]
         
         let jsonData = try JSONSerialization.data(withJSONObject: body)
-    
+        
         do {
             var request = URLRequest(url: url)
             request.httpMethod = "POST"
             request.setValue("application/json", forHTTPHeaderField: "Content-Type")
             request.httpBody = jsonData
             
+            isFavorite.toggle()
+            
             let (_, _) = try await URLSession.shared.data(for: request)
-           
+            
         } catch  {
+            print("DEBUG: \(error.localizedDescription)")
+            throw NetworkEnum.unknown(error)
+        }
+    }
+    
+    private func checkIfMovieIsFavorite() async throws {
+        guard let sessionId = StorageService.getValue(keyType: .sessionId) else { return }
+        
+        guard let url = URL(string: "\(baseUrl)/\(movieId)/account_states?session_id=\(sessionId)&api_key=\(ApiKeys.apiKey)") else { throw NetworkEnum.badUrl }
+        
+        do {
+            let (data, response) = try await URLSession.shared.data(from: url)
+            guard (response as? HTTPURLResponse)?.statusCode == 200 else { throw NetworkEnum.badResponse }
+            guard let json = try JSONSerialization.jsonObject(with: data) as? [String: Any] else { throw NetworkEnum.failedToSerialize }
+            guard let isFavorite = json["favorite"] as? Bool else { throw NetworkEnum.failedToSerialize }
+            self.isFavorite = isFavorite
+            
+        } catch {
             print("DEBUG: \(error.localizedDescription)")
             throw NetworkEnum.unknown(error)
         }
