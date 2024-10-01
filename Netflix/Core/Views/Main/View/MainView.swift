@@ -31,7 +31,7 @@ struct MainView: View {
                     )
                 }
             
-            Text("More")
+            FavoriteMoviesView()
                 .tabItem {
                     Label(
                         title: {
