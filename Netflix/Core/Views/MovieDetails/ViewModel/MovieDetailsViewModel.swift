@@ -119,6 +119,8 @@ import SwiftUI
         
         guard let url = URL(string: url) else { throw NetworkEnum.badUrl }
         
+        isFavorite.toggle()
+        
         let body: [String: Any] = [
             "media_type": "movie",
             "media_id": movieId,
@@ -132,8 +134,6 @@ import SwiftUI
             request.httpMethod = "POST"
             request.setValue("application/json", forHTTPHeaderField: "Content-Type")
             request.httpBody = jsonData
-            
-            isFavorite.toggle()
             
             let (_, _) = try await URLSession.shared.data(for: request)
             
